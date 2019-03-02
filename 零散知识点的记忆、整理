@@ -41,6 +41,20 @@ Memory 存储
 5.Java实现跨平台的原理? （Java程序运行的原理）
 答: Java为我们提供了Java虚拟机(JVM),程序运行时,首先通过编译将后缀名为.java的源文件转换为后缀名为.class的字节码文件,然后Java虚拟机通过装载二进制文件、校验二进制码并解析，最后分发给不同的平台进行运行.
 
+6.HashSet如何检查重复
+当你把对象加入HashSet时，HashSet会先计算对象的hashcode值来判断对象加入的位置，同时也会与其他加入的对象的hashcode值作比较，如果没有相符的hashcode，
+HashSet会假设对象没有重复出现。但是如果发现有相同hashcode值的对象，这时会调用equals（）方法来检查hashcode相等的对象是否真的相同。
+如果两者相同，HashSet就不会让加入操作成功。
+综上,先用hashcode进行比对,hashcode值相等再调用equals()方法比较是否真的相等.
+
+hashCode（）与equals（）的相关规定：
+
+    1.如果两个对象相等，则hashcode一定也是相同的
+    2.两个对象相等,对两个equals方法返回true
+    3.两个对象有相同的hashcode值，它们也不一定是相等的          [****1、2、3这三点很重要,先记下来,以后再去深究****]
+    4.综上，equals方法被覆盖过，则hashCode方法也必须被覆盖
+    5.hashCode()的默认行为是对堆上的对象产生独特值。如果没有重写hashCode()，则该class的两个对象无论如何都不会相等（即使这两个对象指向相同的数据）。
+
 
 
     
